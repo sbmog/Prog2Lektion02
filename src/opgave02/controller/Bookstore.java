@@ -1,9 +1,10 @@
-package Controller;
+package opgave02.controller;
 
-import Model.Basket;
-import Model.Book;
-import Model.Discount;
-import Model.DiscountType;
+
+import opgave02.models.Basket;
+import opgave02.models.Book;
+import opgave02.models.Discount;
+import opgave02.models.DiscountType;
 
 public class Bookstore {
     public static void main(String[] args) {

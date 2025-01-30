@@ -1,10 +1,10 @@
-package Model;
+package opgave02.models;
 
 import java.util.ArrayList;
 
 public class Basket {
-    private ArrayList<Book> items = new ArrayList<Book>();
-    private ArrayList<Discount> discounts = new ArrayList<Discount>();
+    private ArrayList<Book> items = new ArrayList<>();
+    private ArrayList<Discount> discounts = new ArrayList<>();
     private double total = 0;
 
     public void addItem(Book item) {
@@ -27,12 +27,12 @@ public class Basket {
         }
         System.out.println("-------------------------------------------------------------------------");
         for (Discount discount : discounts) {
-            double discountAmount = discount.applyDiscount(this);
-            System.out.printf("%-60s %6.2f kr.\n", discount.getDescription(), discountAmount);
+            double discountAmount = discount.applyDiscount(total);
+            System.out.printf("%-60s %6.2f kr.%n", discount.getDescription(), discountAmount);
             totalDiscount += discountAmount;
         }
         double discountedTotal = total + totalDiscount;
         System.out.println("-------------------------------------------------------------------------");
-        System.out.printf("%-60s %5.2f kr.\n", "ialt: ", discountedTotal);
+        System.out.printf("%-60s %5.2f kr.%n", "ialt: ", discountedTotal);
     }
 }

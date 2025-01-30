@@ -1,4 +1,4 @@
-package Model;
+package opgave02.models;
 
 public class Discount {
     private String description;
@@ -19,17 +19,17 @@ public class Discount {
         return description;
     }
 
-    public double applyDiscount(Basket basket) {
+    public double applyDiscount(double amount) {
         if (discountType == DiscountType.FIXED) {
 
-            if (basket.getTotal() >= minimumAmount) {
+            if (amount >= minimumAmount) {
                 return fixedDiscount;
             } else {
                 return 0;
             }
         } else if (discountType == DiscountType.PROCENT) {
-            return -basket.getTotal() * procentDiscount / 100;
+            return amount * procentDiscount / 100;
         }
-        throw new RuntimeException("Unknown discount type");
+        throw new IllegalArgumentException("Unknown discount type");
     }
 }

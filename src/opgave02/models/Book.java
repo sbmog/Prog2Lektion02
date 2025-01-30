@@ -1,4 +1,4 @@
-package Model;
+package opgave02.models;
 
 public class Book {
     private double price;
