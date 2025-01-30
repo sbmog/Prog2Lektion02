@@ -1,8 +1,8 @@
 package opgave02.models;
 
 public class Book {
-    private double price;
-    private String title;
+    private final double price;
+    private final String title;
 
     public Book(double price, String title) {
         this.price = price;

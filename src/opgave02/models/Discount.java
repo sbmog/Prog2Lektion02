@@ -1,11 +1,11 @@
 package opgave02.models;
 
 public class Discount {
-    private String description;
-    private int procentDiscount;
-    private int fixedDiscount;
-    private int minimumAmount;
-    private DiscountType discountType;
+    private final String description;
+    private final int procentDiscount;
+    private final int fixedDiscount;
+    private final int minimumAmount;
+    private final DiscountType discountType;
 
     public Discount( String description, int procentDiscount, int fixedDiscount, int minimumAmount, DiscountType discountType) {
         this.description = description;
@@ -20,16 +20,19 @@ public class Discount {
     }
 
     public double applyDiscount(double amount) {
-        if (discountType == DiscountType.FIXED) {
-
-            if (amount >= minimumAmount) {
-                return fixedDiscount;
-            } else {
-                return 0;
+        switch (discountType) {
+            case DiscountType.FIXED ->
+            {
+                if (amount >= minimumAmount) {
+                    return fixedDiscount;
+                } else {
+                    return 0;
+                }
             }
-        } else if (discountType == DiscountType.PROCENT) {
-            return amount * procentDiscount / 100;
+            case DiscountType.PROCENT -> {
+                return amount * procentDiscount / 100;
+            }
+            default -> throw new IllegalArgumentException("Unknown discount type");
         }
-        throw new IllegalArgumentException("Unknown discount type");
     }
 }
