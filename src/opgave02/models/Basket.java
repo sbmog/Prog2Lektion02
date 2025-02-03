@@ -23,12 +23,21 @@ public class Basket {
         }
         System.out.println("-------------------------------------------------------------------------");
         for (Discount discount : discounts) {
-            double discountAmount = discount.applyDiscount(total);
+            double discountAmount;
+            if (discount instanceof TwoForOneDiscount){
+                discountAmount = ((TwoForOneDiscount)discount).applyDiscount(this);
+            }else {
+                discountAmount = discount.applyDiscount(total);
+            }
             System.out.printf("%-60s %6.2f kr.%n", discount.getDescription(), discountAmount);
             totalDiscount += discountAmount;
         }
         double discountedTotal = total + totalDiscount;
         System.out.println("-------------------------------------------------------------------------");
         System.out.printf("%-60s %5.2f kr.%n", "i alt: ", discountedTotal);
+    }
+
+    public ArrayList<Book> getItems() {
+    return items;
     }
 }
